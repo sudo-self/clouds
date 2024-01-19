@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+           #footer {
+               position: fixed;
+               padding: 10px 10px 0px 10px;
+               bottom: 0;
+               width: 100%;
+               /* Height of the footer*/
+               height: 40px;
+               background: grey;
+           }
+       </style>
+<meta charset="UTF-8">
+<title>Clouds</title>
+<link rel="stylesheet" href="./style.css">
+<script type="text/javascript" src="./paper-full.js"></script>
+</head>
+<body>
+<script type="text/paperscript" canvas="canvas">
+
+
+    var path;
+    function onMouseDown(event) {
+        path = new Path();
+        path.strokeColor = 'black';
+        path.add(event.point);
+    }
+
+    window.app = {
+
+        tool2: new Tool({
+            minDistance: 20,
+            onMouseDown: onMouseDown,
+            onMouseDrag: function(event) {
+                // Use the arcTo command to draw cloudy lines
+                path.arcTo(event.point);
+            }
+        })
+    };
+</script>
+
+<br>
+    <center><button href="https://clouds.jessejesse.com" class="button-55" role="button">clouds.JesseJesse.com</button></center>
+    <div class="footer"><center><code><b>Paper.js</b>&nbsp;an open source <b>SVG</b> framework. Copyright (c) 2011, MIT Liscense. Juerg Lehni & Jonathan Puckey</code></center></div>
+   
+    <canvas id="canvas" resize></canvas>
+</body>
+</html>
+
+
